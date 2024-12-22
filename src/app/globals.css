@@ -3,19 +3,228 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #ffffff; /* 기본 글자 색을 흰색으로 설정 */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
     --foreground: #ededed;
   }
 }
 
+@font-face {
+  font-family: 'LINESeedKR-Bd';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* 배경 그라데이션 및 이미지 추가 */
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--foreground); /* 글자 색 */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.507)), 
+              url('/back.jpg'); /* 배경 이미지 추가 */
+  background-size: cover; /* 이미지가 화면 전체에 맞도록 설정 */
+  
+  background-attachment: scroll; /* 배경이 스크롤과 함께 이동하도록 설정 */
+  font-family: 'LINESeedKR-Bd', Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  
+}
+@keyframes floating {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.floating {
+  margin-top: 40px;
+  animation: floating 3s ease-in-out infinite;
+}
+
+/* 중앙 정렬 및 스크롤 허용 */
+html, body {
+  height: 100%;
+  overflow-y: auto; /* 스크롤 가능 */
+  margin: 0;
+  padding: 0;
+}
+.scroll-container {
+  height: 100vh; /* 화면 크기에 맞는 높이 설정 */
+  overflow-y: auto; /* 세로 스크롤이 가능하도록 설정 */
+}
+
+.container {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 160vh; /* 화면 높이 */
+  padding: 10px;
+  position: relative; /* 절대 위치 자식 요소 설정 가능 */
+}
+
+/* 제목 스타일 */
+h1 {
+  font-size: 4rem; /* 제목 크기 키우기 */
+  font-weight: bold; /* 제목 두껍게 */
+  text-align: center;
+  color: rgb(255, 255, 255); /* 글자 색상 */
+  position: relative; /* 배경 위로 표시 */
+  z-index: 2; /* 배경보다 위에 표시 */
+  margin-top: 400px; /* 상단 마진 추가 */
+  
+}
+
+
+/* 글자 투명도 설정 */
+h2 {
+  color: rgba(255, 255, 255, 0.587); /* 투명도 조정 */
+  
+  text-align: center; /* 가운데 정렬 */
+  z-index: 1; /* 배경 이미지 위로 표시 */
+  margin-top: -30px;
+}
+
+.page2-container {
+  
+  padding-top: 8rem; /* 또는 원하는 만큼의 패딩 */
+}
+.full-page {
+  z-index: 2; /* 배경보다 위에 표시 */
+  min-height: 100vh;  /* Viewport Height의 100%, 즉 화면 전체 높이 */
+ 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* 파일 버튼 */
+.file-input-wrapper {
+  position: fixed; /* relative에서 fixed로 변경 */
+  margin-top: -300px;  /* 또는 원하는 만큼의 값 */
+}
+.custom-file-input {
+  margin-top: -30px;
+  text-align: center; /* 가운데 정렬 */
+  padding: 10px 20px;
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 21px;
+  text-align: center;
+  transition: all 0.3s ease;
+  
+}
+
+.custom-file-input:hover {
+  background-color: #5a5a5a5b;
+}
+
+.custom-file-input:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+}
+
+/* 숨겨진 실제 파일 입력 부분 */
+.hidden-file-input {
+  display: none; /* 기본 파일 입력 버튼 숨기기 */
+}
+
+/* 커스텀 버튼 스타일 */
+.file-input-wrapper {
+  display: inline-block;
+  position: relative;
+}
+
+
+/* 버튼 컨테이너에 Flexbox 적용: 세로 배치와 왼쪽 정렬 */
+.flex.gap-4 {
+  display: flex;
+  flex-direction: column; /* 세로 배치 */
+  gap: 1rem; /* 버튼 간 간격 */
+  align-items: flex-start; /* 왼쪽 정렬 */
+  margin-top: 20px;
+  position: relative;
+  z-index: 10;
+}
+
+.container section:last-child {
+  margin-top: -120px;  /* 또는 더 큰 값 */
+}
+
+/* 버튼 숨기기 */
+.ar-button {
+  display: none !important;
+}
+
+/* Page3에만 적용될 스타일 */
+.page3 .container {
+  min-height: 100vh; /* 페이지 3만 높이 수정 */
+  padding: 20px;
+  position: relative;
+}
+
+.page3 h1 {
+  margin-top: -500px; /* 제목만 위로 올리기 */
+  text-align: left; /* 왼쪽 정렬 추가 */
+}
+
+
+.page3 h2 {
+  margin-top: 20px; /* 설명 텍스트 상단 마진 */
+}
+
+/* 배경색이나 페이지 3에 필요한 다른 스타일들 */
+.page3 .full-page {
+  z-index: 2;
+  min-height: 100vh; 
+  display: flex;
+  
+}
+.page3 p, 
+.page3 div {
+  font-size: 1.2rem; /* 일반 텍스트 크기 증가 */
+}
+
+/* page4 SNS 아이콘 스타일 */
+.page4 .sns-icons {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin-top: 40px;
+}
+
+.page4 .sns-icon {
+  color: white;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.page4 .sns-icon:hover {
+  opacity: 1;
+  transform: translateY(-5px);
+}
+
+.page4 .sns-icon.instagram:hover {
+  background-color: rgba(228, 64, 95, 0.2);
+}
+
+.page4 .sns-icon.github:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.page4.full-page {
+  padding-top: 0; /* 기존 패딩 제거 */
+  margin-top: -400px; /* 원하는 만큼 위로 올림 */
 }
