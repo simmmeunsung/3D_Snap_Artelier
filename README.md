@@ -4,6 +4,8 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 First, run the development server:
 
+- 프로젝트 파일에서 bash 실행 후 명령해줍니다:
+  
 ```bash
 npm run dev
 # or
@@ -14,11 +16,15 @@ pnpm dev
 bun dev
 ```
 
-If Next.js 미설치돼있을시
+만약 Next.js 미설치돼있을시
 ```bash
 npm install next react react-dom
 
 ```
+해준뒤 위 명령어 해줍니다
+
+그리고나서 사이트를 방문해보세요 ! 
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
