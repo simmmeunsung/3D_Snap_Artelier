@@ -14,6 +14,11 @@ pnpm dev
 bun dev
 ```
 
+If Next.js 미설치돼있을시
+```bash
+npm install next react react-dom
+
+```
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
